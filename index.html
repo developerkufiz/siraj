@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Siraj — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #0a0a0a;
+  --dark:    #111111;
+  --card:    #161616;
+  --line:    #252525;
+  --grey:    #555555;
+  --muted:   #888888;
+  --light:   #b0b0b0;
+  --white:   #f5f5f5;
+  --accent:  #ffffff;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 6vw;
+  background: rgba(10,10,10,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600; letter-spacing: 0.12em;
+  color: var(--white); text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a {
+  font-size: .7rem; font-weight: 400; letter-spacing: .14em;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--muted); transition: color .25s;
+}
+.nav-links a:hover { color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 6vw 8vh;
+  position: relative; overflow: hidden;
+  background: var(--black);
+}
+.hero-number {
+  position: absolute; right: 5vw; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16rem, 28vw, 32rem);
+  font-weight: 300; color: rgba(255,255,255,0.03);
+  line-height: 1; letter-spacing: -0.06em;
+  pointer-events: none; user-select: none;
+  animation: fadeIn 1.5s ease both .5s;
+}
+.hero-eyebrow {
+  font-size: .68rem; font-weight: 400; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+  animation: fadeUp .7s ease both .1s;
+}
+.hero-eyebrow::before {
+  content: ''; width: 40px; height: 1px; background: var(--grey);
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 9vw, 10rem);
+  font-weight: 300; line-height: .95;
+  color: var(--white); letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+  animation: fadeUp .8s ease both .2s;
+}
+h1 em { font-style: italic; color: var(--muted); }
+.hero-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 2rem;
+  animation: fadeUp .8s ease both .35s;
+  border-top: 1px solid var(--line); padding-top: 2rem;
+}
+.hero-desc {
+  font-size: .9rem; line-height: 1.8; color: var(--muted);
+  max-width: 400px; font-weight: 300;
+}
+.btn-row { display: flex; gap: 1rem; align-items: center; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .9rem 2.2rem;
+  background: var(--white); color: var(--black);
+  font-family: 'Outfit', sans-serif; font-size: .7rem;
+  font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: opacity .2s, transform .15s;
+}
+.btn-primary:hover { opacity: .85; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .9rem 2.2rem;
+  background: transparent; color: var(--white);
+  font-family: 'Outfit', sans-serif; font-size: .7rem;
+  font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  border: 1px solid var(--line); cursor: pointer; text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-ghost:hover { border-color: var(--muted); transform: translateY(-2px); }
+.scroll-hint {
+  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--grey); display: flex; align-items: center; gap: .6rem;
+}
+.scroll-hint::before {
+  content: ''; width: 1px; height: 40px; background: var(--grey);
+}
+
+/* ── SECTION COMMONS ── */
+section { padding: 9rem 6vw; border-top: 1px solid var(--line); }
+.sec-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 5rem; flex-wrap: wrap; gap: 1.5rem;
+}
+.sec-num {
+  font-size: .65rem; font-weight: 400; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--grey); padding-top: .4rem;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 300; line-height: 1; letter-spacing: -0.02em;
+  color: var(--white);
+}
+.sec-title em { font-style: italic; color: var(--muted); }
+
+/* ── ABOUT ── */
+#about { background: var(--dark); }
+.about-layout {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start;
+}
+.about-left {}
+.about-bio {
+  font-size: 1.05rem; line-height: 1.9; color: var(--light); font-weight: 300;
+  margin-bottom: 3rem;
+}
+.about-details { display: flex; flex-direction: column; gap: 1.1rem; }
+.detail-row {
+  display: flex; gap: 1.5rem;
+  font-size: .82rem; padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+.detail-label { color: var(--grey); font-weight: 400; min-width: 70px; text-transform: uppercase; font-size: .68rem; letter-spacing: .1em; padding-top: .1rem; }
+.detail-val { color: var(--light); font-weight: 300; line-height: 1.5; }
+.about-right {}
+.stat-strip {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  margin-bottom: 3rem;
+}
+.stat-item {
+  background: var(--card); padding: 2.5rem 2rem;
+  transition: background .2s;
+}
+.stat-item:hover { background: var(--line); }
+.stat-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem; font-weight: 300; color: var(--white);
+  line-height: 1; margin-bottom: .5rem;
+}
+.stat-sub { font-size: .72rem; color: var(--grey); letter-spacing: .08em; text-transform: uppercase; }
+.lang-row { display: flex; gap: .8rem; }
+.lang-tag {
+  padding: .5rem 1.4rem;
+  border: 1px solid var(--line);
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--light); transition: border-color .2s, color .2s;
+}
+.lang-tag:hover { border-color: var(--muted); color: var(--white); }
+
+/* ── EXPERIENCE ── */
+#experience { background: var(--black); }
+.exp-list { display: flex; flex-direction: column; }
+.exp-item {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 3rem; padding: 3.5rem 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.exp-item.visible { opacity: 1; transform: none; }
+.exp-meta {}
+.exp-date {
+  font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--grey); margin-bottom: .6rem;
+}
+.exp-badge {
+  display: inline-block;
+  font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: .3rem .8rem; border: 1px solid var(--line); color: var(--muted);
+}
+.exp-badge.now { border-color: var(--white); color: var(--white); }
+.exp-body {}
+.exp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem; font-weight: 400; color: var(--white);
+  line-height: 1.15; margin-bottom: .5rem;
+}
+.exp-company { font-size: .8rem; color: var(--grey); letter-spacing: .06em; margin-bottom: 1.8rem; }
+.exp-bullets { display: flex; flex-direction: column; gap: .7rem; }
+.exp-bullet {
+  display: flex; gap: 1rem; font-size: .88rem;
+  color: var(--muted); line-height: 1.6; font-weight: 300;
+  align-items: flex-start;
+}
+.exp-bullet::before {
+  content: '—'; color: var(--grey); flex-shrink: 0; margin-top: .05rem;
+}
+
+/* ── SKILLS ── */
+#skills { background: var(--dark); }
+.skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6rem; }
+.skill-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.5rem 0; border-bottom: 1px solid var(--line);
+}
+.skill-name { font-size: .8rem; color: var(--light); min-width: 180px; letter-spacing: .04em; font-weight: 400; }
+.skill-track { flex: 1; height: 1px; background: var(--line); position: relative; }
+.skill-fill {
+  position: absolute; left: 0; top: 0; height: 1px;
+  background: var(--white); width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.skill-pct { font-size: .68rem; color: var(--grey); min-width: 32px; text-align: right; letter-spacing: .06em; }
+
+/* ── EDUCATION ── */
+#education { background: var(--black); }
+.edu-list { display: flex; flex-direction: column; }
+.edu-row {
+  display: grid; grid-template-columns: 220px 1fr auto;
+  gap: 3rem; padding: 3rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.edu-type {
+  font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--grey);
+}
+.edu-degree {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400; color: var(--white); line-height: 1.2;
+}
+.edu-school { font-size: .82rem; color: var(--muted); margin-top: .3rem; }
+.edu-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 300; color: var(--grey); white-space: nowrap;
+}
+
+/* ── REFERENCES ── */
+#references { background: var(--dark); }
+.refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.ref-card {
+  background: var(--card); padding: 2.8rem 2.5rem;
+  transition: background .2s;
+}
+.ref-card:hover { background: #1c1c1c; }
+.ref-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300; color: var(--line);
+  margin-bottom: 1.5rem; line-height: 1;
+}
+.ref-name {
+  font-size: .95rem; font-weight: 500; color: var(--white); margin-bottom: .4rem;
+}
+.ref-org { font-size: .78rem; color: var(--grey); margin-bottom: 1.5rem; letter-spacing: .04em; }
+.ref-info { font-size: .8rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
+.ref-info a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.ref-info a:hover { color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); border-top: 1px solid var(--line);
+  padding: 3rem 6vw; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400; color: var(--grey); letter-spacing: .04em;
+}
+.footer-contact { font-size: .75rem; color: var(--grey); letter-spacing: .08em; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 9999;
+  background: var(--white); color: var(--black);
+  padding: 1rem 1.6rem; font-size: .78rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  display: flex; align-items: center; gap: .8rem;
+  transform: translateY(80px); opacity: 0;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast-dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  h1 { font-size: clamp(3rem, 12vw, 6rem); }
+  .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+  .edu-row { grid-template-columns: 1fr; gap: .8rem; }
+  .refs-grid { grid-template-columns: 1fr; }
+  .skills-layout { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero-number { display: none; }
+  .sec-header { flex-direction: column; }
+  footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Siraj</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#references">References</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-number">MS</div>
+  <div class="hero-eyebrow">Admin &amp; Marketing Professional</div>
+  <h1>Muhammad<br><em>Siraj</em><br>Suhaimi</h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">Inspired by others to thrive — consuming experience, sharpening skills, and building a career that leaves a mark in every organisation.</p>
+    <div class="btn-row">
+      <a class="btn-primary" href="#" onclick="downloadResume(event)">↓ Download Resume</a>
+      <a class="btn-ghost" href="#about">View Portfolio</a>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">About <em>Me</em></h2>
+  </div>
+  <div class="about-layout">
+    <div class="about-left">
+      <p class="about-bio">An active professional inspired by others to thrive, consuming as much experience as possible while improving current skills and gaining new knowledge. Eager to become an important asset in any organisation he joins.</p>
+      <div class="about-details">
+        <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-val">011-11245696</span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-val">muhdsiraj0405@gmail.com</span></div>
+        <div class="detail-row"><span class="detail-label">Location</span><span class="detail-val">308, Blok 37, Jln. Plumbum, 7/97, Seksyen 7, 40000 Shah Alam, Selangor</span></div>
+        <div class="detail-row" style="border:none">
+          <span class="detail-label">Languages</span>
+          <div class="lang-row">
+            <span class="lang-tag">Malay</span>
+            <span class="lang-tag">English</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="stat-strip">
+        <div class="stat-item"><div class="stat-big">3+</div><div class="stat-sub">Years Experience</div></div>
+        <div class="stat-item"><div class="stat-big">3</div><div class="stat-sub">Organisations</div></div>
+        <div class="stat-item"><div class="stat-big">7+</div><div class="stat-sub">Core Skills</div></div>
+        <div class="stat-item"><div class="stat-big">2</div><div class="stat-sub">Qualifications</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Work <em>Experience</em></h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2024 — Present</div>
+        <div class="exp-badge now">Current</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Part-Time Admin Assistant</div>
+        <div class="exp-company">Companies Commission of Malaysia, HQ</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Answering all enquiries related to training matters via general line, WhatsApp and email.</div>
+          <div class="exp-bullet">Assisting marketing and promoting activities through email, WhatsApp and CRM Marketing.</div>
+          <div class="exp-bullet">Managing department assets and handling technical setup for all programmes.</div>
+          <div class="exp-bullet">Graphic and video editing using Adobe Illustrator, After Effects, Photoshop, Canva and Visme.</div>
+          <div class="exp-bullet">Acting as Host / Emcee for department and organisation programmes.</div>
+          <div class="exp-bullet">Cross-checking consumer data for marketing and liaising with external organisations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2023 — 2024</div>
+        <div class="exp-badge">Protégé</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Protégé</div>
+        <div class="exp-company">Companies Commission of Malaysia, HQ</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Marketing and promoting activities through WhatsApp and email.</div>
+          <div class="exp-bullet">Managing consumer data for marketing purposes.</div>
+          <div class="exp-bullet">Acting as Host / Emcee for department programmes.</div>
+          <div class="exp-bullet">Creating marketing materials including monthly posters and promotional videos.</div>
+          <div class="exp-bullet">Answering training-related enquiries via WhatsApp and email.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2020</div>
+        <div class="exp-badge">Internship</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Intern</div>
+        <div class="exp-company">Menteri Besar Selangor Incorporated (MBI)</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Administrative matters including filing and sorting documents.</div>
+          <div class="exp-bullet">Involved in key handover day for the Arcadia housing rescue project.</div>
+          <div class="exp-bullet">Managing house owner data and contacting them for confirmation.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Skills &amp; <em>Expertise</em></h2>
+  </div>
+  <div class="skills-layout">
+    <div>
+      <div class="skill-row"><span class="skill-name">Digital Marketing</span><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div><span class="skill-pct">90</span></div>
+      <div class="skill-row"><span class="skill-name">Communication</span><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div><span class="skill-pct">90</span></div>
+      <div class="skill-row"><span class="skill-name">Critical Thinking</span><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div><span class="skill-pct">90</span></div>
+    </div>
+    <div>
+      <div class="skill-row"><span class="skill-name">Management Skills</span><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div><span class="skill-pct">85</span></div>
+      <div class="skill-row"><span class="skill-name">Microsoft Office Tools</span><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div><span class="skill-pct">85</span></div>
+      <div class="skill-row"><span class="skill-name">Creativity</span><div class="skill-track"><div class="skill-fill" style="--w:70%"></div></div><span class="skill-pct">70</span></div>
+      <div class="skill-row"><span class="skill-name">Editing Tools (Adobe / Canva)</span><div class="skill-track"><div class="skill-fill" style="--w:70%"></div></div><span class="skill-pct">70</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Academic <em>Background</em></h2>
+  </div>
+  <div class="edu-list">
+    <div class="edu-row">
+      <div class="edu-type">Bachelor's Degree</div>
+      <div>
+        <div class="edu-degree">Bachelor of Science Administration (Hons)</div>
+        <div class="edu-school">UiTM Kota Kinabalu, Sabah</div>
+      </div>
+      <div class="edu-year">2019 — 2021</div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-type">Diploma</div>
+      <div>
+        <div class="edu-degree">Diploma of Public Administration</div>
+        <div class="edu-school">UiTM Raub, Pahang</div>
+      </div>
+      <div class="edu-year">2016 — 2019</div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">Professional <em>References</em></h2>
+  </div>
+  <div class="refs-grid">
+    <div class="ref-card">
+      <div class="ref-num">01</div>
+      <div class="ref-name">Encik Mohammad bin Perkasi</div>
+      <div class="ref-org">Companies Commission of Malaysia</div>
+      <div class="ref-info">019-3179262<br><a href="mailto:pmohammad@ssm.com.my">pmohammad@ssm.com.my</a></div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-num">02</div>
+      <div class="ref-name">Puan Siti Hajar binti Adanan</div>
+      <div class="ref-org">Companies Commission of Malaysia</div>
+      <div class="ref-info">019-2008632<br><a href="mailto:shajar@ssm.com.my">shajar@ssm.com.my</a></div>
+    </div>
+    <div class="ref-card">
+      <div class="ref-num">03</div>
+      <div class="ref-name">Puan Norhafiza binti Ramli</div>
+      <div class="ref-org">Menteri Besar Selangor (Incorporated)</div>
+      <div class="ref-info">018-2527621<br><a href="mailto:norhafiza@mbiselangor.com.my">norhafiza@mbiselangor.com.my</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Muhammad Siraj bin Muhammad Suhaimi</div>
+  <div class="footer-contact">Shah Alam, Selangor &nbsp;·&nbsp; muhdsiraj0405@gmail.com</div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  Resume Downloaded
+</div>
+
+<script>
+  // Skill bars on scroll
+  const fills = document.querySelectorAll('.skill-fill');
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.style.getPropertyValue('--w') || e.target.style.cssText.match(/--w:\s*([^;]+)/)?.[1] || '0%';
+        sObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  fills.forEach(f => sObs.observe(f));
+
+  // Experience items fade in
+  const expItems = document.querySelectorAll('.exp-item');
+  const eObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 120);
+        eObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  expItems.forEach(el => eObs.observe(el));
+
+  // Download PDF
+  function downloadResume(e) {
+    e.preventDefault();
+    try {
+      const b64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgNyAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0F1dGhvciAoYW5vbnltb3VzKSAvQ3JlYXRpb25EYXRlIChEOjIwMjYwMzMwMDMxODA2KzAwJzAwJykgL0NyZWF0b3IgKGFub255bW91cykgL0tleXdvcmRzICgpIC9Nb2REYXRlIChEOjIwMjYwMzMwMDMxODA2KzAwJzAwJykgL1Byb2R1Y2VyIChSZXBvcnRMYWIgUERGIExpYnJhcnkgLSBcKG9wZW5zb3VyY2VcKSkgCiAgL1N1YmplY3QgKHVuc3BlY2lmaWVkKSAvVGl0bGUgKHVudGl0bGVkKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0NvdW50IDEgL0tpZHMgWyA0IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKOCAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCA0NDI0Cj4+CnN0cmVhbQpHYiFsIz5CZWdbJnE4SDlecnVHWTRVRmQ6R2ovLUE3bnBYUVNaSnIwcFZBTD43OCZTYm5XSy1DZmpESnI/QFcnUWZNWDkmSFZXVWI9O1s1WEs1VXI5InJFJS0oVlhTW0RrJUwzQy8wNlJTSicpZHIuXCYsI1ZwbSpCKExqSFdVQy5jMyxbcy5kIkNkLm83XEk/RWAuIS8hX0VHWlNLSjE/O0MxRGRrREE0KCFUVD4mZFV1STJgMWBqP29uSVlsMCJcI20tbHFHQ08qSF91R2sjQjQqQ2RjWWxjUF9qRW5iRCIvZnVuJzNAXTUtLGYuaE1FJSVMMCRhIjtCLWw7QjdtczFKc0hrOnQ2aXMqcFpQWS9zdVg5KD9FU2Q2NTM9TFs6SChIVT1kWHRWV3FAS2clUWNsWiZwW2MhZ0QjPVE+bzFQLDJhPF1oNj5kJV1DNTYsVFcnbmA4NVE2IzFPbyZfPyhLbzVubCNTRyRbWEsvIjZlbEsxLCZuYSxmbzFCMSYxNVBOTCdwRjEkJSRYRSNUTE5KMFBjQEFzNipBMmJaTmNMb15vKDZEZnBUWyVXIWk3UiJsQz8zMSIrXEFccWo9V2I6YD45JDg0WW9LZlhWXUFdM1twTypcR0daSHE8aUNSPGZoZz9bMzYiIiwuKkFxNDk8Xm8mNHNbNGRmZ0k5UCJxQlhfTnJzbXFScV1RJXMycCg3Z0ksJEhSTzw3UTQ+dXBIRk90ZkVTRVRqPiNcUjlCZilBUi9qJXFhLmAvLl8uYTlvJFxJUjQmQ1AiOUpqY1IibGRfXylYNjs+Ylg4SGgmN3FxLChBVVpVS19GNW9aTUg0OFY3SlI9M1I6SzEiLz84a0JPYDtBW01dJydRR1BfPTtqa2MsMVhxZidQVz9WYEYlbzRdNCpmNlxOYG5LYSNSNVJvM2NEJ1NeQyFwSUloOmNSOjpgJ21UYUo+cHNGVDhkOiM8UEJYJVg0Pjw2U1A9KmZuQjJTND1ubClEPEczLSFtVVJyaUBgcDBxUEo6LyRBKCwtX2w+TWhIJlNJPl83UT9kJ0VVRUxPPWpzRSdwX15KZ3NcayJrPj1iL2FfTENmS0skbj8hbDglJzg9NDQxRjxESkEzUkJeRVlJNVMmSnRaZ0hqM1s4T2tdPmRrPSx0SSNUS3VaQXE3OSxXVyhHMWxxdCZSalxSMGcvXnJROFFSamMlWjlJNmVMIWdETHMjXVk9WkFzX0JmayddPitBT29PRWxVRGdQaChpdCs6Q0Vzaz1COixlPCQ6bz4tLypYb09XRiQ0QSguOm43VkJlM0EiWk90aiQ7SzFtSk91bEZvcEpVWFxuaSkxXSRHdG0/Y11vaW5CU0dEJzZHSDExLWxzbT85TmJkXnMuUHFcRnRRLUktVFFFT2JXUUxKLU9hRThCbCVnYExVSW9GWmxFN01lLjlLOkMqNiFwTD5gPEZIYVthPz9aREUwTDo2Q1FBOTolYGRlc046XFwzMlwsSykmVmprP0hibCllOXR1JU1jXS1EJjNVUycpNGM+MjJSSC1yZU9OWkI4Yk5eSjkzN10laV1sSUIzND4rLDRcQVVLXjBvbnRzYS8uJkBoP0skZlIpX0BKVD1kbUluZG4kMkxuQ0teOlhcNU0zVF9dR3Bkc25xaXM2U0kqRV9jPkdfRzZOQnUpJWxtTVlDWWhhWyVmUCJcTUJwQklhc286PXVVN3IsazUoWTdsPEkoNl5ZaitQWSJuayIrZVtJMElHX1dHbURMISdZXkVlMWMrZk5eJUYvZixJMy9oaVYiTWtlMzs3Z1srMiFjYUkvMyhkOW0tLHBvTiY0X1I/XEsjJixCLGNGbUI7RHVfa0gmWnNEaThWLEEhX1AhKjlYbHNIdUpoa2RGcDgiM05nTioiOkZfc1svJ1FPJ1pVUlpyUTVqZTtgV1QhalU+J0pfYzRvdC5WQ1opbyptMjRSKilzLjo0LzdxMyRLYDFhR0YnXGAlNXE8QHJjJTdTQ2pFNE5qKXNBWi1kIjhFR11lXyZnQFNXVlhgMVBBOm0vQTlQYC9WbVlqPWs6QVo9cjc8Q1VxVWhWXklhVjliWG1bO3ReVkpzLCNfQztAJE1DRyhMJ01gS1BWXS09RjBuaVBhUGlzR0M7Kysiak9WNSZtTS0/XUNhLnUqOC5GQzotKitAPG0pRj9yLFVHZ0pxWCoxLlNNR1xnSUdDK2xca0k5bCdEdEhoYWRrM19PK3EuLmdeN1YiM3EpIUxVZ08hOitLYC1hJlwkKWQjbUNDR244YVs2KGtXaEpva3VLXW5gOlJSX042I1okPVpCK0IlQ190a0o6cVprPmVlP2AlalxlWVskJVlTSzxjKVhUX1lJXWVtSnQoSj9dbV8/Iyk9KlQvZDdJW1wlXUVoRDs4WmNtLiJlSU8mUzY8KnQ0UVFOVGRNQXJPZlcybz1ZYmNqWTouM14mOGE4aig3allJZFxNXmJQJjs5OGtwbmg/XDtJIjRYcmtUbi4tTyM1UEReITJfVmYzMGJvcF5ASzBsKzQoVnBKU1RBOFQvSEREQVxgNGddbUVyKWkmcEduYzw5c0UjM11kUyk2LWtpUGFmIWdSQUtUQUU1dHBFK3U1ZShyY0JvZFQ3L2NXUyc3XidqcTxnUD9IOCRsVFpbOGFBUEF0WjQ+IlkpTylONDleQUApJWtDQS9aZSUmOT1yL0E5PVJ1Il5NTXMqNEVlZCI1cDxlX0dQNUBqZzhcUk5jLWJba25mWyFQPCU+XFIwTzpAR0pETzMjQjdGZERgPyo9TzZTTyQ2YTMvdSYlMyRoPyNVN0ZsWVInMShVWVttOUtnT0QpLTEnKVZhMkUtOF4kXDhLYCtVdVY8UyRqLTRMVSVmRUsxWCkrPEAkLiJkOk4qLkRCQEdKbilgSXI5MDZRcGZwZ0xCTz4xZVdVVEpxRWwqOF5cSkBgSyFVS1daSkorMU5sayU+SytIPCpRZVlGRjY3dVlLN1lCLTBLckMrNWxUKlI/QHNLTm0sU1dRK2Q6UDghJipAXk90a2NeLyFZWTNCWnNVJixEbWVCWz9lRXBtaSgxYUw/blpdc087I1chcUJRM0VsLXRtQCpGZG9bIiRkQHM2THBiNl9cNjFqYzdNY25IUGpMO0dXbXAjNEFpU0JcS1FEJE40SDloK0xrQyNMOU0iYzs0Y11oY15UPFNmIURTWCleL09nTShVZE9KQ11sYFsrIzxfNjtUVkJqRWRKZ1hvZShsMyUiWCRwTXRQQytDUzhGaUNiVWU2Z3A6NmF0RiI/a0A+QGYoJDxeZW0mKlhPOFhDQmF1Mz4vI0RkSVdtcEheaDxwa3VXKiMtbVBTV09TN0lsL2YoP0xsNj1ZKDVBYmJBWkguRjUvXFxCTWNJXEhhST9eYmlQdS1PZ3EsTXJiJlRtMTojWmQ6c082QyMsQW8zckEqK2xZa3E6Kz9PJU1cXkpWUD0rMzY/bjZNXj9eSFRwcToxcmA7KXFiQ0tNOydCL3JhYixFI2giYzJlXCVFTSY9LjMjUzNnLSc5aU50IzlcaidiJy0zVypXaFYzNGw7WyFYcFpAMjRjJFVddUlqRTMmKC0hSFI3XG9RVXJqNjVJUDM8JnVNTlRVW09BJ2JNZVkkLkxYJCtnbWZRXy9oIzhxX0psOC8mWmZHUStzJm5aNmpPZktAYyUzNkBvUm5kbXBLc3VkcFAmJmY/WF1GdHBCTjdTY1xNO0srRFdgLEBmU1BLL1NkN0lFQ3EuXlhAL008Ljs3QFtyUUFTNFk2ZVxxQlNPUDlSZ09KUWk3IyZCXl8uRkcoPmI/OFldZy0wLE1LL1c/RU5nRCZkWk5zMzsxQVVpIlN0YEpKJDc8bkZuJVlUYT4sMy0kSFArdSRSIXRhPGApZGtuKlhBbjlAUE9LIXJbJjtUKSVyVUJuMXIvSy1ER1duSVdMSW9wJStyaUlVK15aTWlRUjREP1VlZElxaj1fb11sY1xhT1tuXidmK3NeMTYhZEVObmByLC5SZUZDc1JnaWFmMWNfUk51MlNtP0lxZ1htYT4qPVhmL20nYmsjc0pdI2FnailsNypJVCZbWi8jX2ZhSkBJNHBPc0pqIW88MGhbUGgtNCVjKkRJJE07PUVIJFNvREhabU4sS1JqO2xkLis7Ny87cUEjP21LR1YtTUwtMzRzJU1gQDNAa1hzMyQmUTNwRz9kYSwzYHJJMnJrYzFiTXNqXjZdQDMwWjJnNDQ3Z20oWTcpJFJNOkZgPUM/SDAja14yOycoW1RcPiwwLVhOJFdtOWRyJVRNPXFGNjx1WD9kX0UvUEU2S1klTCQpZyY+ISd1VywjLyo1Y01vZ01HKE5bcydWWTtYVVonbDFAUjJaJmhQbi5NJixAKDZNWSIqLTBTZyhPYk5kKDsnTnApL2tTN1gqPktsKEpyMTBtNlVjaVdGIXJXIUVbMSo1TUB0I0glKj0pdTsuO1QiSl8jSEJhYzlIV2VIMilHJV8+XS9fWSRCUDMsRy5bbWglXVFTWUBjZiorQFcrXGZbSz5ASnM5MVFgRF43YiFDbSxcZGBdRCVVOFsvTDhqdGxNUm0iblliIiEzKEpGMDxZRFpOV0RIIm9FQWZTcVJuVHAlN0c4RSppLlg7Oj1lQjpbMDdwNWRAYWlnRF1BUkV1cktJV1xNWERKPy8iODxUImUvYy0wPUxWRi8lJywjSTxLXVh0KFNfL1JfckxCZ0YvY3M1YDclJnRmUiREZ3FUSyI4VT9LKnRSLTFoSTpQSHMkNGMsblMnL08nYzQ4X1kzZm9yP1MySkxBbG1lUmxkVzBYLEtlQF9jWTZFVCQ2YDVYJ1slWCFrLE5bQFdQa21iITAwbzdaMSxBYEYpSHRzQDslbStvayE3Kj9VOHM+TFA5J1dBJ15WRTY0TW1yblFYa0ZLJ3FYTnEmV0hFJUpqSDFuKGl0X0tYbVdQP1VEOl5bXDk9OC01UEktLlBvZzAsP1JrdSksaFJdZGxVMDxmTz4qODtfYVtqTTUoJk88YmUpSipjbU5ISV42I01taUEtSUIzbihYaTZDSEtlQmImc2lfPVhBNCdEUlojdV9icSNeNEtbVVZPW2BEOipPYiJmR15DP3BESSNCJyVPUyJMO0BONGNcIzphRVcxLy4nPEthZ15KRiJWYm8nYkBAKDJSKWsrTzFwOmE0anI6X3NjMCJxb2NSXUFVZGk6PC90bFtRW1MoQVFXbXQsVDJMND4qMDlzdEBKdCsiJiZJXyZMblw4M2hLY2kwYUx0WGVYQTpWWCQ1RG9wRUhjR1M3clM0XSFVXldyT1EyZyRTIzxiTGE8YzRAKkBiY2dfOCwoKURrLHRoTSphITwlbXNtcyQqYXVhWi9gK0hIMT8rIUBKYldHSzVvZ0csSUdnZUAhTFwoXypBZC0scE0oQnMhOTU5ZzI9MUtNNVJubmFqWEY6NEooXSxgUkRFL0tyO0o6QFhCaixJPE08RSFPcXUmIyRbaDNvOGovOlJMRyc1XWQ3PCZKIm84NzBETG82W28naFlYJ2pccU8nUDhdNWFDSkFSbCErK10rOD5fYVVMTUpqTz1eLmExY3VBYmpncEJRaExMWDxuRm5ZMCo3W0FsWCZocCkwOjBDLXVhPGgpJmArS0xkKjI5KjlyRjwmO29KZkZdPUlHWnE4Qm9rVkxgVyY0WkZXPnNLUj9lLD5oQ2BrT0VaZTZqMU5qK29KQiU2WFdMTG1scTc9UjI1PWoqUDo5Qy5iSFhUVjdfa2ZgPlM0Nm5mR3JhN1IkRzxtYVk8aGwlKE03P2hHPylPXFVIR15MWloiajtiVFlucW1PIms2WVohdWVnX1A1M3UwaW5FTzEzMiI0amEpQ2NyPjUsYUpgZzA8dCNON2Y6ZUd+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDkKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDYxIDAwMDAwIG4gCjAwMDAwMDAxMDIgMDAwMDAgbiAKMDAwMDAwMDIwOSAwMDAwMCBuIAowMDAwMDAwMzIxIDAwMDAwIG4gCjAwMDAwMDA1MjQgMDAwMDAgbiAKMDAwMDAwMDU5MiAwMDAwMCBuIAowMDAwMDAwODUzIDAwMDAwIG4gCjAwMDAwMDA5MTIgMDAwMDAgbiAKdHJhaWxlcgo8PAovSUQgCls8ZTRkNjA4NjQ2ODM4OTQ1ZDQ3MjZlN2Q1ZWEwZjYxZmY+PGU0ZDYwODY0NjgzODk0NWQ0NzI2ZTdkNWVhMGY2MWZmPl0KJSBSZXBvcnRMYWIgZ2VuZXJhdGVkIFBERiBkb2N1bWVudCAtLSBkaWdlc3QgKG9wZW5zb3VyY2UpCgovSW5mbyA2IDAgUgovUm9vdCA1IDAgUgovU2l6ZSA5Cj4+CnN0YXJ0eHJlZgo1NDI3CiUlRU9GCg==";
+      const binary = atob(b64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Muhammad_Siraj_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    } catch(err) {
+      alert('Download failed: ' + err.message);
+    }
+  }
+</script>
+</body>
+</html>
